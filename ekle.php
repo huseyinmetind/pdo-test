@@ -1,14 +1,14 @@
 <?php
+require_once 'baglan.php';
 
-
-        if(isset($_POST["Kaydet"]))
+        if(isset($_POST["kaydet"]))
         {
-            require_once 'baglan.php';
             
-            $sql = "INSERT INTO `ogrenci` (`ogr_no`, `ogr_ad`, `ogr_soyad`, `ogr_cinsiyet`, `ogr_dtarih`, `ogr_sinif`,) VALUES (NULL, ?, ?, ?, ?, ?,);";
+            
+            $sql = "INSERT INTO `ogrenci` (`ogr_no`, `ogr_ad`, `ogr_soyad`, `ogr_cinsiyet`, `ogr_dtarih`, `ogr_sinif`) VALUES (NULL, ?, ?, ?, ?, ?);";
             
             $dizi = [
-                $_POST['ogr_no'],
+                
                 $_POST['ogr_ad'],
                 $_POST['ogr_soyad'],
                 $_POST['ogr_cinsiyet'],
@@ -17,15 +17,19 @@
 
             ];
 
-            $sth = $baglan->prepare($sql);
-            $sonuc =$sth->execute($dizi);
+            $sorgu = $baglan->prepare($sql);
+            $sorgu->execute($dizi);
             
-            if ($sonuc) 
-                echo "Veri ekleme başarılı!";
+            if ($sorgu) 
+                 echo '<div class="alert alert-success" role="alert">
+            Kayit Basarili Bir Sekilde Eklendi.
+            </div>';
             else 
-                echo "Veri ekleme hatası: " . $sth->errorInfo()[2];
+                echo '<div class="alert alert-danger" role="alert">
+            Kayit Basarisiz. 
+            </div>';
             
-
+        
 
 
 
@@ -88,7 +92,7 @@
     <main>
     <div class="container">
         <form action="" method="post" class="row mt-4 g-3">
-        <input type="hidden" name= "ogr_no" value="<?=$satir['ogr_no']?>"> 
+        <!--      <input type="hidden" name= "ogr_no" value="<?=$satir['ogr_no']?>"> -->
             <div class="col-6">
                 <label for="ogr_ad" class="form-label">Adınız</label>
                 <input type="text" class="form-control" name="ogr_ad">
@@ -113,7 +117,7 @@
                     <input type="radio" name="ogr_cinsiyet" value="E">
                 </label>
             </div>
-            <button type="submit" name="Kaydet" class="btn btn-primary">Kaydet</button>
+            <button type="submit" name="kaydet" class="btn btn-primary">Kaydet</button>
         </form>
     </div>
     </main>

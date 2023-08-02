@@ -2,7 +2,8 @@
  
 require_once "baglan.php";
  
-        if(isset($_POST['Guncelle'])){
+        if(isset($_POST['Guncelle']))
+        {
         
             $sql = "UPDATE `ogrenci` SET 
                     `ogr_ad` = ?,
@@ -80,19 +81,19 @@ require_once "baglan.php";
             <input type="hidden" name= "ogr_no" value="<?=$satir['ogr_no']?>">   
             <div class="col-6">
                 <label for="ogr_ad" class="form-label">Adınız</label>
-                <input type="text" class="form-control" name="ogr_ad">
+                <input type="text" class="form-control" name="ogr_ad" value="<?=$satir['ogr_ad']?>">
             </div>
             <div class="col-6">
                 <label for="ogr_soyad" class="form-label">Soyadınız</label>
-                <input type="text" class="form-control" name="ogr_soyad">
+                <input type="text" class="form-control" name="ogr_soyad" value="<?=$satir['ogr_soyad']?>">
             </div>
             <div class="col-6">
                 <label for="ogr_sinif" class="form-label">Sınıf</label>
-                <input type="text" class="form-control" name="ogr_sinif">
+                <input type="text" class="form-control" name="ogr_sinif" value="<?=$satir['ogr_sinif']?>">
             </div>
             <div class="col-6">
                 <label for="ogr_dtarih" class="form-label">Doğum Tarihi</label>
-                <input type="date" class="form-control" name="ogr_dtarih">
+                <input type="date" class="form-control" name="ogr_dtarih" value="<?=$satir['ogr_dtarih']?>">
             </div>
             <div class="col">
                 <label for="" class="form-label">Kız

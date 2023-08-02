@@ -2,6 +2,16 @@
 
 require_once 'baglan.php';
 
+        if (isset($_GET['sil']))
+        {
+            $sqlsil = "DELETE FROM `ogrenci` WHERE `ogrenci`.`ogr_no` = ?";
+            $sorgusil = $baglan->prepare($sqlsil);
+            $sorgusil->execute([
+                $_GET['sil']
+             ]);
+
+        }
+
 $sql = 'SELECT * FROM ogrenci';
 $sorgu = $baglan->prepare($sql);
 $sorgu->execute();
